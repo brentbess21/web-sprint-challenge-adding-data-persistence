@@ -3,7 +3,7 @@ const db = require('./../../data/dbConfig');
 
 async function getTasks() {
    const taskInfo = await db('tasks as t')
-        .leftJoin('projects as p')
+        .leftJoin('projects as p', 't.project_id', 'p.project_id')
         .select(
             't.task_id', 
             't.task_description',
@@ -12,7 +12,7 @@ async function getTasks() {
             'p.project_name', 
             'p.project_description'
             )
-        .groupBy('t.task_id')
+        .orderBy('t.task_id')
 
     const updatedTaskInfo = []
 

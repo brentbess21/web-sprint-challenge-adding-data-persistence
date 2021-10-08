@@ -26,7 +26,7 @@ exports.up = async function(knex) {
             .onUpdate('CASCADE')
     })
     .createTable('project_resources', table => {
-        table.increments('project_resource_id') //come back to this
+        table.increments('project_resource_id') 
     })
     
     
