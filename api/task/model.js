@@ -28,6 +28,12 @@ async function getTasks() {
     return updatedTaskInfo
 }
 
+async function insertTask(task) {
+    const [task_id] = await db('tasks').insert(task)
+    return db('tasks').where('task_id', task_id).first()
+}
+
 module.exports = {
-    getTasks
+    getTasks,
+    insertTask
 }
