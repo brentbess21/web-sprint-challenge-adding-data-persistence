@@ -22,6 +22,9 @@ exports.up = async function(knex) {
             .references('project_id')
             .inTable('projects')
     })
+    .createTable('project_resources', table => {
+        table.increments('project_resource_id') //come back to this
+    })
     
     
 };
