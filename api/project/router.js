@@ -6,7 +6,7 @@ const Project = require('./model');
 
 router.get('/', async (req, res, next)=> {
     try {
-        const projects = await Project.get()
+        const projects = await Project.getProjects()
     res.status(200).json(projects)
 
     } catch (err) {

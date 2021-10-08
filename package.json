@@ -9,6 +9,7 @@
     "rollback": "knex migrate:rollback",
     "up": "knex migrate:up",
     "down": "knex migrate:down",
+    "seed": "knex seed:run",
     "test": "cross-env NODE_ENV=testing jest --watchAll --verbose --runInBand --silent"
   },
   "repository": {

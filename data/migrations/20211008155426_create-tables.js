@@ -34,4 +34,5 @@ exports.down = async function(knex) {
     .dropTableIfExists('projects')
     .dropTableIfExists('resources')
     .dropTableIfExists('tasks')
+    .dropTableIfExists('project_resources')
 };
