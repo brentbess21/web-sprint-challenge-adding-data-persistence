@@ -14,7 +14,7 @@ async function getProjects() {
             updatedProjectInfo.push(trueProject)
         }
     });
-    return (updatedProjectInfo)
+    return updatedProjectInfo
 }
 
 async function insertProject(project) {
@@ -27,7 +27,7 @@ async function insertProject(project) {
         updatedProjectInfo.push(trueProject)
     }
     const [project_id] = await db('projects').insert(updatedProjectInfo)
-    return getProjects(project_id)
+    return db('projects').where('project_id', project_id).first()
 }
 
 
