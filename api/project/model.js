@@ -6,15 +6,15 @@ async function getProjects() {
     const updatedProjectInfo = []
     
     projectsInfo.forEach(project => {
-        if (project.project_completed === 0){
+        if (project.project_completed === 0 || project.project_completed === undefined ){
             const falseProject = { ...project, project_completed: false}
-            updatedProjectInfo.push(falseProject)
+            updatedProjectInfo.push(falseProject);
         } else {
             const trueProject = {...project, project_completed: true}
-            updatedProjectInfo.push(trueProject)
+            updatedProjectInfo.push(trueProject);
         }
     });
-    return updatedProjectInfo
+    return updatedProjectInfo;
 }
 
 async function insertProject(project) {

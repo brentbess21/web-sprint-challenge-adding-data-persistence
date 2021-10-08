@@ -29,8 +29,8 @@ async function getTasks() {
 }
 
 async function insertTask(task) {
-    const [task_id] = await db('tasks').insert(task)
-    const newTaskInfo =  await db('tasks').where('task_id', task_id).first()
+    const [task_id] = await db('tasks').insert(task);
+    const newTaskInfo =  await db('tasks').where('task_id', task_id).first();
 
     if(newTaskInfo.task_completed === 0 || newTaskInfo.task_completed === undefined) {
         const falseNewTask = { ...newTaskInfo, task_completed: false}
