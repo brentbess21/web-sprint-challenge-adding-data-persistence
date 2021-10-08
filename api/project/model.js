@@ -18,16 +18,18 @@ async function getProjects() {
 }
 
 async function insertProject(project) {
-    const updatedProjectInfo = []
-    if (project.project_completed === 0 || project.project_completed === undefined){
-        const falseProject = { ...project, project_completed: false}
-        updatedProjectInfo.push(falseProject)
+    const [project_id] = await db('projects').insert(project)
+    const newProjectInfo = await db('projects').where('project_id', project_id).first()
+    
+
+    if (newProjectInfo.project_completed === 0 || newProjectInfo.project_completed === undefined){
+        const falseNewProject = { ...newProjectInfo, project_completed: false}
+        return falseNewProject
     } else {
-        const trueProject = {...project, project_completed: true}
-        updatedProjectInfo.push(trueProject)
+        const trueNewProject = {...newProjectInfo, project_completed: true}
+        return trueNewProject
     }
-    const [project_id] = await db('projects').insert(updatedProjectInfo)
-    return db('projects').where('project_id', project_id).first()
+
 }
 
 
